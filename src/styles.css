@@ -7,11 +7,16 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
   max-width: 1280px;
 }
 
 img {
-  max-width: 360px;
+  max-width: 300px;
 }
 
 .stats {

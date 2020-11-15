@@ -15,14 +15,16 @@ refs.loadMore.addEventListener('click', onLoadMore)
 
 function onSearch(e) { 
   e.preventDefault();
+
+  if (e.currentTarget.elements.query.value === '') { return alert('Please enter your request text in the input field')} 
   deleteImagesMarkup();
-  imagesApiService.query = e.currentTarget.elements.query.value;
+  imagesApiService.searchQuery = e.currentTarget.elements.query.value;
   imagesApiService.resetPage();
-  imagesApiService.fetchArticles().then(addImagesMarkup);
+  addImagesOnPage()
 }
 
 function onLoadMore() { 
-  imagesApiService.fetchArticles().then(addImagesMarkup);
+  addImagesOnPage()
 }
 
 function addImagesMarkup(hits) { 
@@ -31,4 +33,8 @@ function addImagesMarkup(hits) {
 
 function deleteImagesMarkup() { 
   refs.imagesConatainer.innerHTML = '';
+}
+
+function addImagesOnPage() { 
+  imagesApiService.fetchArticles().then(addImagesMarkup);
 }
